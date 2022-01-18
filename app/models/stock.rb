@@ -17,4 +17,9 @@ class Stock < ApplicationRecord
             return nil
         end
     end
+
+    def self.check_db(ticker_symbol)
+        # Stock is implied since we are in the stock
+        where(ticker: ticker_symbol).first
+    end
 end
