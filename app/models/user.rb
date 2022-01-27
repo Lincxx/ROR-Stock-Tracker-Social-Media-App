@@ -40,6 +40,10 @@ class User < ApplicationRecord
     users.reject {|user| user.id == self.id}
   end
 
+  def not_friends_with?(friend_id)
+    !self.friends.where(id: friend_id).exists?
+  end
+
   def self.first_name_matches(param)
     matches('first_name', param)
   end
