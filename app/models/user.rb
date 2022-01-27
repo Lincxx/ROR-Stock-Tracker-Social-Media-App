@@ -36,6 +36,10 @@ class User < ApplicationRecord
     to_send_back
   end
 
+  def except_current_user(users)
+    users.reject {|user| user.id == self.id}
+  end
+
   def self.first_name_matches(param)
     matches('first_name', param)
   end
